@@ -7,6 +7,7 @@ from .models import *
 from .serializer import *
 from django.http import JsonResponse
 import subprocess
+from rest_framework.decorators import api_view
 class IndexView(APIView):
     
     def get(self,request):
@@ -52,7 +53,9 @@ class ConfiguracionViewSet(viewsets.ModelViewSet):
     queryset = Configuracion.objects.all()
     serializer_class = ConfiguracionSerializer
 
-def mi_vista(request):
+
+@api_view(['GET'])
+def get_data(request):
     #http://127.0.0.1:8000/api/mi_vista/?operacion=borrar&id_b=15
     operacion = request.GET.get('operacion', None)
     nombre = request.GET.get('nombre', None)
