@@ -76,6 +76,11 @@ class Configuracion(models.Model):
     rol = models.ForeignKey(Rol,on_delete=models.CASCADE)
     
 
+class Mqtt(models.Model):
+    nombre= models.CharField(max_length=50 , null=True)
+    valor = models.IntegerField()
+    fecha_registro = models.DateTimeField('fecha...', null=True , blank=True , auto_now=True)
+
     
 
 

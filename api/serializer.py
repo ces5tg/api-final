@@ -55,6 +55,11 @@ class ConfiguracionSerializer(serializers.ModelSerializer):
         model = Configuracion
         fields = '__all__'
 
+class MqttSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mqtt
+        fields = '__all__'
+
 
 
 

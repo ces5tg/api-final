@@ -1,6 +1,7 @@
 from django.urls import path , include
 
 from .views import *
+from . import views
 from  rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -20,7 +21,8 @@ router.register('configuracion' ,ConfiguracionViewSet)
 urlpatterns = [
  
     #path('',views.IndexView.as_view(),name='index'),
-    path('' , include(router.urls))
+    path('' , include(router.urls)),
+   path('api/mi_vista/', views.mi_vista),
   
    
 ]
