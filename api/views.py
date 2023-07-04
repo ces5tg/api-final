@@ -71,6 +71,8 @@ def get_data(request):
         consulta.save()
         comando = f"python3 /var/www/html/envia.py '{{'operacion':'crear', 'nombre':'{nombre}', 'valor':'{valor}'}}'"
         ejecutar_comando_terminal(comando)
+
+        
      
         
     if(operacion == "consultar"):
@@ -89,8 +91,15 @@ def get_data(request):
         resultado = Mqtt.objects.get(id=id_a)
         resultado.valor = valor
         resultado.save()
-        comando = f"python3 /var/www/html/envia.py '{{'operacion':'actualizar', 'id':'{id_a}', 'valor':'{valor}'}}'"
-        ejecutar_comando_terminal(comando)
+        """ comando = f"python3 /var/www/html/envia.py '{{'operacion':'actualizar', 'id':'{id_a}', 'valor':'{valor}'}}'"
+        
+        ejecutar_comando_terminal(comando) """
+
+        comando = ["python3", "/var/www/html/envia.py"]
+        argumento = "{'operacion': 'consulta'}"
+
+        # Ejecuta el comando y obtén la salida
+        subprocess.run(comando + [argumento], capture_output=True, text=True)
        
     if(operacion =="borrar"):
         resultado = Mqtt.objects.get(id=id_b)
