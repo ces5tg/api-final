@@ -95,7 +95,7 @@ def get_data(request):
         
         ejecutar_comando_terminal(comando) """
 
-        comando = ["python3", "/var/www/html/envia.py"]
+        comando = ["python3", "/var/www/html/envia.py "]
         argumento = "{'operacion': 'consulta'}"
 
         # Ejecuta el comando y obtén la salida
